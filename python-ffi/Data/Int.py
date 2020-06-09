@@ -2,7 +2,14 @@ import math
 
 
 def fromNumberImpl(just):
-    raise NotImplementedError()
+    def nothing_(nothing):
+        def n_(n):
+            if isinstance(n, int):
+                return just(n)
+            else:
+                return nothing
+        return n_
+    return nothing_
 
 
 # exports.fromNumberImpl = function (just) {
@@ -20,7 +27,16 @@ def toNumber(n):
 
 
 def fromStringAsImpl(just):
-    raise NotImplementedError()
+    def nothing_(nothing):
+        def radix_(radix):
+            def s_(s):
+                try:
+                    return just(int(s, radix))
+                except ValueError as e:
+                    return nothing
+            return s_
+        return radix_
+    return nothing_
 
 
 # exports.fromStringAsImpl = function (just) {
@@ -52,8 +68,12 @@ def fromStringAsImpl(just):
 
 def toStringAs(radix):
     def ap(i):
-        raise NotImplementedError()
-
+        BS="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        result = ""
+        while i:
+            result+=BS[i%radix]
+            i//= radix
+        return result[::-1] or "0"
     return ap
 
 
