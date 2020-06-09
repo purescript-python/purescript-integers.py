@@ -4,8 +4,8 @@ import math
 def fromNumberImpl(just):
     def nothing_(nothing):
         def n_(n):
-            if isinstance(n, int):
-                return just(n)
+            if n == int(n):
+                return just(int(n))
             else:
                 return nothing
         return n_
