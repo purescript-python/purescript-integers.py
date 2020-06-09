@@ -116,7 +116,7 @@ rem = lambda x: lambda y: x % y
 # };
 
 
-pow = lambda x: lambda y: math.pow(x, y)
+pow = lambda x: lambda y: int(x ** y)
 
 # exports.pow = function (x) {
 #   return function (y) {
