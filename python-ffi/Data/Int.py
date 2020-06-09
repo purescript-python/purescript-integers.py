@@ -98,7 +98,7 @@ def toStringAs(radix):
 #   };
 # };
 
-quot = lambda x: lambda y: x / y
+quot = lambda x: lambda y: x // y
 
 # exports.quot = function (x) {
 #   return function (y) {
