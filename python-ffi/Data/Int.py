@@ -26,12 +26,17 @@ def toNumber(n):
     return n
 
 
+maxn = 2 ** 31 - 1
+minn = - 2 ** 31
 def fromStringAsImpl(just):
     def nothing_(nothing):
         def radix_(radix):
             def s_(s):
                 try:
-                    return just(int(s, radix))
+                    value = int(s, radix)
+                    if value > maxn or value < minn:
+                        return nothing
+                    return just(value)
                 except ValueError as e:
                     return nothing
             return s_
