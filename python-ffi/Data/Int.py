@@ -8,7 +8,9 @@ def fromNumberImpl(just):
                 return just(int(n))
             else:
                 return nothing
+
         return n_
+
     return nothing_
 
 
@@ -27,7 +29,9 @@ def toNumber(n):
 
 
 maxn = 2 ** 31 - 1
-minn = - 2 ** 31
+minn = -(2 ** 31)
+
+
 def fromStringAsImpl(just):
     def nothing_(nothing):
         def radix_(radix):
@@ -39,8 +43,11 @@ def fromStringAsImpl(just):
                     return just(value)
                 except ValueError as e:
                     return nothing
+
             return s_
+
         return radix_
+
     return nothing_
 
 
@@ -73,12 +80,15 @@ def fromStringAsImpl(just):
 
 def toStringAs(radix):
     def ap(i):
-        BS="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        BS = "0123456789abcdefghijklmnopqrstuvwxyz"
         result = ""
+        sign = "" if i > 0 else "-"
+        i = abs(i)
         while i:
-            result+=BS[i%radix]
-            i//= radix
-        return result[::-1] or "0"
+            result += BS[i % radix]
+            i //= radix
+        return sign + (result[::-1] or "0")
+
     return ap
 
 
